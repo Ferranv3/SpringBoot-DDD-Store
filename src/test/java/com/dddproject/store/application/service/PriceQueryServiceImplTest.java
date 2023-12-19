@@ -33,7 +33,6 @@ class PriceQueryServiceImplTest {
     void testFindPriceAt10h14thFor35455Product() {
         LocalDateTime testDate = LocalDateTime.of(2023, 6, 14, 10, 0);
         Price mockPrice = new Price();
-        PriceResponseDto mockPriceResponse = new PriceResponseDto();
 
         when(pricePersistenceAdapter.findApplicablePrices(productId, brandId, testDate))
                 .thenReturn(Collections.singletonList(mockPrice));
@@ -62,7 +61,6 @@ class PriceQueryServiceImplTest {
     void testFindPriceAt21h14thFor35455Product() {
         LocalDateTime testDate = LocalDateTime.of(2023, 6, 14, 21, 0);
         Price mockPrice = new Price();
-        PriceResponseDto mockPriceResponse = new PriceResponseDto();
 
         when(pricePersistenceAdapter.findApplicablePrices(productId, brandId, testDate))
                 .thenReturn(Collections.singletonList(mockPrice));
@@ -77,7 +75,6 @@ class PriceQueryServiceImplTest {
     void testFindPriceAt10h15thFor35455Product() {
         LocalDateTime testDate = LocalDateTime.of(2023, 6, 15, 10, 0);
         Price mockPrice = new Price();
-        PriceResponseDto mockPriceResponse = new PriceResponseDto();
 
         when(pricePersistenceAdapter.findApplicablePrices(productId, brandId, testDate))
                 .thenReturn(Collections.singletonList(mockPrice));
@@ -91,10 +88,7 @@ class PriceQueryServiceImplTest {
     @Test
     void testFindPriceAt21h16thFor35455Product() {
         LocalDateTime testDate = LocalDateTime.of(2023, 6, 16, 21, 0);
-        Long productId = 35455L;
-        Long brandId = 1L;
         Price mockPrice = new Price();
-        PriceResponseDto mockPriceResponse = new PriceResponseDto();
 
         when(pricePersistenceAdapter.findApplicablePrices(productId, brandId, testDate))
                 .thenReturn(Collections.singletonList(mockPrice));
@@ -108,8 +102,6 @@ class PriceQueryServiceImplTest {
     @Test
     void findApplicablePricesWhenNotFoundTest() {
         LocalDateTime testDate = LocalDateTime.of(2023, 1, 1, 10, 0);
-        Long productId = 1L;
-        Long brandId = 1L;
 
         Exception exception = assertThrows(PriceNotFoundException.class, () -> {
             priceQueryService.findApplicablePrice(testDate, productId, brandId);
